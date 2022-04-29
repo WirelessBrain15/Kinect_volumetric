@@ -1,0 +1,44 @@
+class image_test 
+{
+	private:
+		ros::init("Image_test");
+		ros::NodeHandle node;
+
+		cv::namedWindow("view");
+		image_transport::image_transport it(node);
+		image_transport::Subscriber sub = it.subscribe("/camera/rgb/image_color", 1, &image_test::RGBCallback);
+		ros::spin();
+		cv.destroyWindow("view");
+
+	public:
+		// double base_height = 0.0;
+		// double new_height = 100;
+		// double area = 10000;
+		// double cyF = 0;
+		// double cxF = 0;
+		// double cx = 0;
+		// double cy = 0;
+		// double ppmA = NULL;
+		// double ppmB = NULL;
+		// bool flag = false;
+
+		double* midpoint(int ptA[], int ptB[])
+		{
+			static double temp[2] = {(ptA[0] + ptB[0]) * 0.5, (ptA[1] + ptB[1]) * 0.5};
+			return temp;
+		}
+
+		static void RGBListener()
+		{
+			// ros::init("Image_test");
+			// ros::NodeHandle node;
+			// ros::Subscriber sub = node.subscribe("/camera/rgb/image_color", 1, image_test.RGBCallback);
+			ros::spin();
+		}
+
+		void RGBCallback(const sensor_msgs::Image::ImageConstPtr& msg)
+		{
+			cout<<"banana"<<endl;
+		}
+
+};
