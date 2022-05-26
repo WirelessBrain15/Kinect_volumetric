@@ -2,11 +2,13 @@ cmake_minimum_required(VERSION 3.0.2)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
+SET(OpenCV_DIR home/bose/installation/OpenCV-master/lib/cmake/opencv4)
+
 project(test_kinect)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
-SET(OpenCV_DIR /home/aspagteq/installation/OpenCV/lib/cmake/opencv4)
+#SET(OpenCV_DIR /home/aspagteq/installation/OpenCV/lib/cmake/opencv4)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
@@ -19,7 +21,9 @@ find_package(catkin REQUIRED COMPONENTS
   image_transport
   sensor_msgs
   std_msgs
+  #OpenCV
 )
+find_package(OpenCV REQUIRED)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -171,7 +175,7 @@ target_link_libraries(${PROJECT_NAME}_cpp
 ## Mark executable scripts (Python etc.) for installation
 ## in contrast to setup.py, you can choose the destination
  catkin_install_python(PROGRAMS
-   src/test_kinect.py src/test_kinect_2.py
+   src/test_kinect.py src/demo_kinect.py src/main_kinect.py
    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
  )
 
